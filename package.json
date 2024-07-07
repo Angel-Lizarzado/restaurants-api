@@ -1,0 +1,19 @@
+{
+  "name": "restaurant-api",
+  "version": "1.0.0",
+  "description": "Api para gestionar restaurantes - IMMNE",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "Angel Lizarzado",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.10.2",
+    "winston": "^3.13.0"
+  }
+}
