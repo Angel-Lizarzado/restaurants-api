@@ -1,6 +1,6 @@
 const winston = require('winston');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User'); // Importar el modelo de usuario
+const User = require('../models/user'); // Importar el modelo de usuario
 
 const logger = winston.createLogger({
     level: 'info',

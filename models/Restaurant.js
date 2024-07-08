@@ -15,7 +15,16 @@ class Restaurant {
             const results = await db.execute(query);
             return results[0];
         } catch (err) {
-            console.error(err);
+            throw err;
+        }
+    }
+
+    static async findAllForUsers(userId) {
+        const query = 'SELECT * FROM restaurants WHERE user_id = ?';
+        try {
+            const results = await db.execute(query, [userId]);
+            return results[0];
+        } catch (err) {
             throw err;
         }
     }
@@ -31,25 +40,23 @@ class Restaurant {
                 throw new Error('Restaurant not found');
             }
         } catch (err) {
-            console.error(err);
             throw err;
         }
     }
 
-    static async create(restaurant) {
-        const query = 'INSERT INTO restaurants (name, description, address, phone, user_id) VALUES (?, ?, ?, ?, ?)';
+    static async create(restaurant, userId) {
+        const query = 'INSERT INTO restaurants (name, description, address, phone, user_id) VALUES (?,?,?,?,?)';
         try {
             const result = await db.execute(query, [
                 restaurant.name,
                 restaurant.description,
                 restaurant.address,
                 restaurant.phone,
-                restaurant.user_id
+                userId
             ]);
             const createdRestaurant = { id: result.insertId, ...restaurant };
             return createdRestaurant;
         } catch (err) {
-            console.error(err);
             throw err;
         }
     }
@@ -60,17 +67,16 @@ class Restaurant {
             const result = await db.execute(query, [updates.name, updates.address, updates.phone, id]);
             return result.affectedRows;
         } catch (err) {
-            console.error(err);
             throw err;
         }
     }
+
     static async delete(name) {
         const query = 'DELETE FROM restaurants WHERE name =?';
         try {
             const result = await db.execute(query, [name]);
             return result.affectedRows;
         } catch (err) {
-            console.error(err);
             throw err;
         }
     }

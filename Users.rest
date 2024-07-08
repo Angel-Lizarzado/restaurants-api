@@ -1,0 +1,24 @@
+### POST /usuarios
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+  "username": "test",
+  "email": "test@example.com",
+  "password": "test",
+  "role" : "USER"
+}
+
+### POST /usuarios/login
+POST http://localhost:3333/usuarios/login
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "test"
+}
+
+### GET /restaurantes (con autenticación)
+GET http://localhost:3333/restaurants
+Authorization: Bearer 
+Accept: application/json

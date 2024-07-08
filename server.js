@@ -8,10 +8,8 @@ const db = require("./db")
 app.use(logMiddleware);
 app.use(bodyParser.json());
 
-
-
-app.use('/restaurants', require('./routes/restaurants'));
-app.use('/users', require('./routes/users'));
+app.use('/restaurantes', require('./routes/restaurants'));
+app.use('/usuarios', require('./routes/users'));
 
 const port = 3333;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
